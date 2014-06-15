@@ -1,0 +1,11 @@
+<div>
+
+    <div ng-style="{'width': puzzle.dimensionX * puzzle.size, 'height': puzzle.dimensionY * puzzle.size}">
+
+        <img ng-repeat="image in puzzle.images" ng-src="{{ image.src }}" data-id="{{ image.id }}" ng-click="move($index)" title="{{ $index }}">
+
+    </div>
+
+    <button ng-click="shuffle()">shuffle</button>
+
+</div>
