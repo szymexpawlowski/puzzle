@@ -1,0 +1,27 @@
+<div>
+    <form role="form" name="settingsForm" novalidate>
+
+        <div class="form-group">
+            <label for="dimensionX">Dimension x</label>
+            <input type="number" name="dimensionX" id="dimensionX" class="form-control" ng-model="settings.dimensionX" min="4" />
+        </div>
+
+        <div class="form-group">
+            <label for="dimensionY">Dimension Y</label>
+            <input type="number" name="dimensionY" id="dimensionY" class="form-control" ng-model="settings.dimensionY" min="4" />
+        </div>
+
+        <div class="form-group">
+            <label for="puzzleFile">Your puzzle</label>
+            <input type="file" file-upload-with-preview-widget data-file-model="settings.file" data-preview-model="settings.preview" id="puzzleFile">
+        </div>
+
+        <div class="form-group">
+            <img ng-src="{{ settings.preview }}" />
+        </div>
+
+        <button type="submit" ng-click="uploadFile()" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
