@@ -9,7 +9,9 @@ angular.module('puzzleApp').directive('filePreviewWidget', [
 
                 var reader = new FileReader();
                 reader.onloadend = function() {
+
                     scope.$apply(function() {
+
                         scope.settings.preview = reader.result;
                     });
                 };
@@ -17,6 +19,7 @@ angular.module('puzzleApp').directive('filePreviewWidget', [
                 scope.$watch('settings.file', function(newFile) {
 
                     if (newFile !== undefined) {
+
                         reader.readAsDataURL(newFile);
                     }
                 });
