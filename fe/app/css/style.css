@@ -1,0 +1,7 @@
+#previewCanvas {
+    border:3px solid red
+}
+
+#gridCanvas {
+    position: absolute; left: 3px; top:3px;
+}
