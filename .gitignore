@@ -1,3 +1,4 @@
 .idea
 fe/app/vendor
 fe/node_modules
+fe/coverage

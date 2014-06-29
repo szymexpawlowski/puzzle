@@ -10,7 +10,7 @@ angular.module('puzzleApp').factory('ArrayHelper', [
                 var tmp;
 
                 if (arr[currentPosition] === undefined || arr[nextPosition] === undefined) {
-                    throw 'rangeException';
+                    throw 'OutOfRangeException';
                 }
 
                 tmp = arr[nextPosition];
