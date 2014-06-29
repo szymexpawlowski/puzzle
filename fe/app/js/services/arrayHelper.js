@@ -5,12 +5,17 @@ angular.module('puzzleApp').factory('ArrayHelper', [
     function() {
 
         return {
-            switchElements: function(matrix, currentPosition, nextPosition) {
+            switchElements: function(arr, currentPosition, nextPosition) {
 
-                var tmp = matrix[nextPosition];
+                var tmp;
 
-                matrix[nextPosition] = matrix[currentPosition];
-                matrix[currentPosition] = tmp;
+                if (arr[currentPosition] === undefined || arr[nextPosition] === undefined) {
+                    throw 'rangeException';
+                }
+
+                tmp = arr[nextPosition];
+                arr[nextPosition] = arr[currentPosition];
+                arr[currentPosition] = tmp;
             },
             fill: function(nbOfElements, start, step) {
 
