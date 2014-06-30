@@ -25,13 +25,6 @@ angular.module('puzzleApp').factory('Shuffle', ['ArrayHelper', 'Position',
 
                 return possibleMoves[possibleMoveIndex];
             },
-            // ask Alfonso whether to use currying like
-//            appendDimension = function(otherDimensionPosition) {
-//
-//                return function(value) {
-//                    return { x: value, y: otherDimensionPosition };
-//                }
-//            },
             appendDimension = function(value, dimension) {
                 return { x: value, y: dimension };
             },

@@ -13,9 +13,19 @@ angular.module('puzzleApp').factory('Position',
 
         return {
             getX: function(position, dimensionX) {
+
+                if (dimensionX === 0) {
+                    throw 'RuntimeException';
+                }
+
                 return position % dimensionX;
             },
             getY: function(position, dimensionY) {
+
+                if (dimensionY === 0) {
+                    throw 'RuntimeException';
+                }
+
                 return Math.floor(position / dimensionY);
             },
             convertToFlatIndex: function(position, dimensionX) {
