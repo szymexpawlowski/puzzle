@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('puzzleApp').factory('Shuffle', ['ArrayHelper', 'Position',
+angular.module('puzzleApp').factory('Shuffle', ['ArrayHelper', 'Position', 'Random',
 
-    function(arrayHelper, position) {
+    function(arrayHelper, position, random) {
 
         var getNewPosition = function(currentPosition, dimensionX, dimensionY) {
 
@@ -21,7 +21,7 @@ angular.module('puzzleApp').factory('Shuffle', ['ArrayHelper', 'Position',
             },
             selectPossiblePosition = function(possibleMoves) {
 
-                var possibleMoveIndex = Math.floor(Math.random() * possibleMoves.length);
+                var possibleMoveIndex = Math.floor(random.random() * possibleMoves.length);
 
                 return possibleMoves[possibleMoveIndex];
             },

@@ -13,7 +13,7 @@ angular.module('puzzleApp').controller('PuzzleCtrl', ['$scope', 'Puzzle', 'Shuff
 
         $scope.shuffle = function() {
 
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 50; i++) {
                 $scope.puzzle.currentPosition = shuffle.move($scope.puzzle.images, $scope.puzzle.currentPosition, $scope.puzzle.dimensionX, $scope.puzzle.dimensionY);
             }
         }
