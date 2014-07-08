@@ -2,7 +2,7 @@
 
 describe('GridDrawer', function() {
 
-    beforeEach(module('puzzleApp'));
+    beforeEach(module('settingsModuleServices'));
 
     var ctx = jasmine.createSpyObj('ctx', ['clearRect', 'beginPath', 'stroke', 'moveTo', 'lineTo']);
 

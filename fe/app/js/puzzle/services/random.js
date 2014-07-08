@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').factory('Random', [
+angular.module('puzzleModuleServices').factory('Random', [
 
     function() {
 

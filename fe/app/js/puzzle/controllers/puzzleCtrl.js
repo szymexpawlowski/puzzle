@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').controller('PuzzleCtrl', ['$scope', 'Puzzle', 'Shuffle', 'ArrayHelper', 'Position',
+angular.module('puzzleModuleControllers').controller('PuzzleCtrl', ['$scope', 'Puzzle', 'Shuffle', 'ArrayHelper', 'Position',
     function($scope, puzzle, shuffle, arrayHelper, position) {
         console.log('puzzle ctrl boot');
 

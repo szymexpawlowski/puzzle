@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').factory('Position',
+angular.module('puzzleModuleServices').factory('Position',
 
     function() {
 

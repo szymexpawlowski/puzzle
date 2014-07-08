@@ -2,7 +2,7 @@
 
 describe('ArrayHelper', function() {
 
-    beforeEach(module('puzzleApp'));
+    beforeEach(module('puzzleModuleServices'));
 
     describe('switchElements', function() {
 

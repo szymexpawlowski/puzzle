@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('puzzleApp').directive('fileUploadWidget', ['$parse',
+angular.module('settingsModuleDirectives').directive('fileUploadWidget', ['$parse',
     function ($parse) {
         return {
             restrict: 'E',
-            templateUrl: 'js/views/settings/directives/fileUploadWidget.html',
+            templateUrl: 'js/settings/views/directives/fileUploadWidget.html',
             link: function(scope, element, attrs) {
 
                 var fileModel = $parse(attrs.fileModel),

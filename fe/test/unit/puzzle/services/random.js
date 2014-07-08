@@ -2,7 +2,7 @@
 
 describe('Random', function() {
 
-    beforeEach(module('puzzleApp'));
+    beforeEach(module('puzzleModuleServices'));
 
     describe('random', function() {
 

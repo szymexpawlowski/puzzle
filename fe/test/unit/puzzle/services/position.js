@@ -2,7 +2,7 @@
 
 describe('Position', function() {
 
-    beforeEach(module('puzzleApp'));
+    beforeEach(module('puzzleModuleServices'));
 
     describe('getX', function() {
 

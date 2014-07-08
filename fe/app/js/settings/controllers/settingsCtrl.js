@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').controller('SettingsCtrl', ['$scope',
+angular.module('settingsModuleControllers').controller('SettingsCtrl', ['$scope',
     function($scope) {
         console.log('settings ctrl boot');
 

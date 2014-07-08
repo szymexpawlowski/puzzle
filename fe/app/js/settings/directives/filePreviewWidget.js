@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').directive('filePreviewWidget', ['GridDrawer',
+angular.module('settingsModuleDirectives').directive('filePreviewWidget', ['GridDrawer',
     function (gridDrawer) {
 
         var allPropertiesSetUp = function(settings) {
@@ -9,7 +9,7 @@ angular.module('puzzleApp').directive('filePreviewWidget', ['GridDrawer',
 
         return {
             restrict: 'E',
-            templateUrl: 'js/views/settings/directives/filePreviewWidget.html',
+            templateUrl: 'js/settings/views/directives/filePreviewWidget.html',
             link: function(scope, element, attrs, ctrl) {
 
                 var img = new Image(),

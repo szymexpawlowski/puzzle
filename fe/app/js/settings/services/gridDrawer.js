@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').factory('GridDrawer', [
+angular.module('settingsModuleServices').factory('GridDrawer', [
 
     function() {
 

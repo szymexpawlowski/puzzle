@@ -7,7 +7,7 @@ describe('Shuffle', function() {
         dimensionY = 4,
         mockRandom;
 
-    beforeEach(module('puzzleApp'));
+    beforeEach(module('puzzleModuleServices'));
 
     beforeEach(function() {
 

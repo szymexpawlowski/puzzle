@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').factory('ArrayHelper', [
+angular.module('puzzleModuleServices').factory('ArrayHelper', [
 
     function() {
 

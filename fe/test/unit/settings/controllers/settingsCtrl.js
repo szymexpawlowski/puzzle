@@ -2,7 +2,7 @@
 
 describe('SettingsCtrl', function() {
 
-    beforeEach(module('puzzleApp'));
+    beforeEach(module('settingsModuleControllers'));
 
     it('should create "settings" model with width and height properties set to 400', inject(function($controller) {
         var scope = {},

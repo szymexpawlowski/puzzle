@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puzzleApp').factory('Puzzle', ['$resource',
+angular.module('puzzleModuleServices').factory('Puzzle', ['$resource',
 
     // resource for future use when backend will be available
     function($resource) {
