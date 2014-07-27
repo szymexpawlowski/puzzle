@@ -1,12 +1,30 @@
-'use strict';
+//'use strict';
+//
+//angular.module('settingsModuleControllers').controller('SettingsCtrl', ['$scope',
+//    function($scope) {
+//        console.log('settings ctrl boot');
+//
+//        $scope.settings = {
+//            width: 400,
+//            height: 400
+//        };
+//    }
+//]);
 
-angular.module('settingsModuleControllers').controller('SettingsCtrl', ['$scope',
-    function($scope) {
-        console.log('settings ctrl boot');
+define(['../module'], function (settingsModule) {
 
-        $scope.settings = {
-            width: 400,
-            height: 400
-        };
-    }
-]);
+    'use strict';
+
+    console.log('settingsCtrl boot');
+
+    settingsModule.controller('SettingsCtrl', ['$scope',
+        function($scope) {
+            console.log('settings ctrl boot');
+
+            $scope.settings = {
+                width: 400,
+                height: 400
+            };
+        }
+    ]);
+});
