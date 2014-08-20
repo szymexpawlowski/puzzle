@@ -1,6 +1,6 @@
 <div>
 
-    <div ng-style="{'width': puzzle.dimensionX * puzzle.size, 'height': puzzle.dimensionY * puzzle.size}">
+    <div ng-style="{'width': getWidth(), 'height': getHeight()}">
 
         <img ng-repeat="image in puzzle.images" ng-src="{{ image.src }}" data-id="{{ image.id }}" ng-click="move($index)" title="{{ $index }}">
 

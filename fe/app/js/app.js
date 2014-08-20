@@ -28,10 +28,11 @@
 
 define([
     'angular',
-    'settings/index'
+    'settings/index',
+    'puzzle/index'
 ], function(angular) {
 
     console.log('app boot');
 
-    return  angular.module('puzzleApp', ['ngRoute', 'puzzleApp.settings']);
+    return  angular.module('puzzleApp', ['ngRoute', 'puzzleApp.settings', 'puzzleApp.puzzle']);
 });

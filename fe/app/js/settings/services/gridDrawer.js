@@ -1,45 +1,48 @@
-'use strict';
+define(['../module'], function(settingsModule) {
 
-angular.module('settingsModuleServices').factory('GridDrawer', [
+    'use strict';
 
-    function() {
+    settingsModule.factory('GridDrawer', [
 
-        var drawLines = function(ctx, length, dimension, callback) {
+        function() {
 
-                var i, position,
-                    pieceSize = length / dimension;
+            var drawLines = function(ctx, length, dimension, callback) {
 
-                for (i = 1; i < dimension; i++) {
+                    var i, position,
+                        pieceSize = length / dimension;
 
-                    position = i * pieceSize;
+                    for (i = 1; i < dimension; i++) {
 
-                    ctx.beginPath();
-                    callback(ctx, position, length);
-                    ctx.lineWidth = 3;
-                    ctx.strokeStyle = '#ff0000';
-                    ctx.stroke();
+                        position = i * pieceSize;
+
+                        ctx.beginPath();
+                        callback(ctx, position, length);
+                        ctx.lineWidth = 3;
+                        ctx.strokeStyle = '#ff0000';
+                        ctx.stroke();
+                    }
+                },
+                drawVerticalLines = function(ctx, position, length) {
+
+                    ctx.moveTo(position, 0);
+                    ctx.lineTo(position, length);
+                },
+                drawHorizontalLines = function(ctx, position, length) {
+
+                    ctx.moveTo(0, position);
+                    ctx.lineTo(length, position);
+                };
+
+            return {
+                drawGrid: function(ctx, width, height, dimensionX, dimensionY) {
+
+                    ctx.clearRect(0, 0, width, height);
+
+                    drawLines(ctx, width, dimensionX, drawVerticalLines);
+                    drawLines(ctx, height, dimensionY, drawHorizontalLines);
                 }
-            },
-            drawVerticalLines = function(ctx, position, length) {
 
-                ctx.moveTo(position, 0);
-                ctx.lineTo(position, length);
-            },
-            drawHorizontalLines = function(ctx, position, length) {
-
-                ctx.moveTo(0, position);
-                ctx.lineTo(length, position);
-            };
-
-        return {
-            drawGrid: function(ctx, width, height, dimensionX, dimensionY) {
-
-                ctx.clearRect(0, 0, width, height);
-
-                drawLines(ctx, width, dimensionX, drawVerticalLines);
-                drawLines(ctx, height, dimensionY, drawHorizontalLines);
             }
-
         }
-    }
-]);
+    ]);
+});

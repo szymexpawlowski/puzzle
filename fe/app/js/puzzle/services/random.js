@@ -1,15 +1,18 @@
-'use strict';
+define(['../module'], function(puzzleModule) {
 
-angular.module('puzzleModuleServices').factory('Random', [
+    'use strict';
 
-    function() {
+    puzzleModule.factory('Random', [
 
-        return {
+        function() {
 
-            random: function() {
+            return {
 
-                return Math.random();
+                random: function() {
+
+                    return Math.random();
+                }
             }
         }
-    }
-]);
+    ]);
+});

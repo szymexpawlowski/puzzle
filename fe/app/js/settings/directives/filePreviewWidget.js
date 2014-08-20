@@ -1,48 +1,51 @@
-'use strict';
+define(['../module'], function(settingsModule) {
 
-angular.module('settingsModuleDirectives').directive('filePreviewWidget', ['GridDrawer',
-    function (gridDrawer) {
+    'use strict';
 
-        var allPropertiesSetUp = function(settings) {
-            return !!(settings.file !== undefined && settings.dimensionX !== undefined && settings.dimensionY !== undefined)
-        };
+    settingsModule.directive('filePreviewWidget', ['GridDrawer',
+        function (gridDrawer) {
 
-        return {
-            restrict: 'E',
-            templateUrl: 'js/settings/views/directives/filePreviewWidget.html',
-            link: function(scope, element, attrs, ctrl) {
+            var allPropertiesSetUp = function(settings) {
+                return !!(settings.file !== undefined && settings.dimensionX !== undefined && settings.dimensionY !== undefined)
+            };
 
-                var img = new Image(),
-                    reader = new FileReader(),
-                    previewCtx = element.find('canvas')[0].getContext('2d'),
-                    gridCtx = element.find('canvas')[1].getContext('2d');
+            return {
+                restrict: 'E',
+                templateUrl: 'js/settings/views/directives/filePreviewWidget.html',
+                link: function(scope, element, attrs, ctrl) {
 
-                img.onload = function() {
+                    var img = new Image(),
+                        reader = new FileReader(),
+                        previewCtx = element.find('canvas')[0].getContext('2d'),
+                        gridCtx = element.find('canvas')[1].getContext('2d');
 
-                    previewCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, scope.settings.width, scope.settings.height);
-                };
+                    img.onload = function() {
 
-                reader.onloadend = function() {
+                        previewCtx.drawImage(img, 0, 0, img.width, img.height, 0, 0, scope.settings.width, scope.settings.height);
+                    };
 
-                    img.src = reader.result;
-                };
+                    reader.onloadend = function() {
 
-                scope.$watch('settings.file', function(newFile) {
+                        img.src = reader.result;
+                    };
 
-                    if (newFile !== undefined) {
+                    scope.$watch('settings.file', function(newFile) {
 
-                        reader.readAsDataURL(newFile);
-                    }
-                });
+                        if (newFile !== undefined) {
 
-                scope.$watchCollection('settings', function(settings) {
+                            reader.readAsDataURL(newFile);
+                        }
+                    });
 
-                    if (allPropertiesSetUp(settings)) {
+                    scope.$watchCollection('settings', function(settings) {
 
-                        gridDrawer.drawGrid(gridCtx, settings.width, settings.height, settings.dimensionX, settings.dimensionY);
-                    }
-                });
-            }
-        };
-    }
-]);
+                        if (allPropertiesSetUp(settings)) {
+
+                            gridDrawer.drawGrid(gridCtx, settings.width, settings.height, settings.dimensionX, settings.dimensionY);
+                        }
+                    });
+                }
+            };
+        }
+    ]);
+});

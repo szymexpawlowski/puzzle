@@ -1,37 +1,40 @@
-'use strict';
+define(['../module'], function(puzzleModule) {
 
-angular.module('puzzleModuleServices').factory('ArrayHelper', [
+    'use strict';
 
-    function() {
+    puzzleModule.factory('ArrayHelper', [
 
-        return {
-            switchElements: function(arr, currentPosition, nextPosition) {
+        function() {
 
-                var tmp;
+            return {
+                switchElements: function(arr, currentPosition, nextPosition) {
 
-                if (arr[currentPosition] === undefined || arr[nextPosition] === undefined) {
-                    throw 'OutOfRangeException';
+                    var tmp;
+
+                    if (arr[currentPosition] === undefined || arr[nextPosition] === undefined) {
+                        throw 'OutOfRangeException';
+                    }
+
+                    tmp = arr[nextPosition];
+                    arr[nextPosition] = arr[currentPosition];
+                    arr[currentPosition] = tmp;
+                },
+                fill: function(nbOfElements, start, step) {
+
+                    var i,
+                        result = [];
+
+                    step = step || 1;
+                    start = start || 0;
+
+                    for (i = 0; i < nbOfElements; i++) {
+                        result.push(start);
+                        start += step;
+                    }
+
+                    return result;
                 }
-
-                tmp = arr[nextPosition];
-                arr[nextPosition] = arr[currentPosition];
-                arr[currentPosition] = tmp;
-            },
-            fill: function(nbOfElements, start, step) {
-
-                var i,
-                    result = [];
-
-                step = step || 1;
-                start = start || 0;
-
-                for (i = 0; i < nbOfElements; i++) {
-                    result.push(start);
-                    start += step;
-                }
-
-                return result;
             }
         }
-    }
-]);
+    ]);
+});

@@ -1,40 +1,53 @@
-'use strict';
+define(['../module'], function(puzzleModule) {
 
-angular.module('puzzleModuleControllers').controller('PuzzleCtrl', ['$scope', 'Puzzle', 'Shuffle', 'ArrayHelper', 'Position',
-    function($scope, puzzle, shuffle, arrayHelper, position) {
-        console.log('puzzle ctrl boot');
+    'use strict';
 
-        var correct;
+    puzzleModule.controller('PuzzleCtrl', ['$scope', 'Puzzle', 'Shuffle', 'ArrayHelper', 'Position',
+        function($scope, puzzle, shuffle, arrayHelper, position) {
 
-        $scope.puzzle = puzzle.query();
-        $scope.puzzle.currentPosition = $scope.puzzle.images.length - 1;
+            console.log('puzzle ctrl boot');
 
-        correct = arrayHelper.fill($scope.puzzle.images.length);
+            var correct;
 
-        $scope.shuffle = function() {
+            $scope.puzzle = puzzle.query();
+            $scope.puzzle.currentPosition = $scope.puzzle.images.length - 1;
 
-            for (var i = 0; i < 50; i++) {
-                $scope.puzzle.currentPosition = shuffle.move($scope.puzzle.images, $scope.puzzle.currentPosition, $scope.puzzle.dimensionX, $scope.puzzle.dimensionY);
-            }
-        }
+            correct = arrayHelper.fill($scope.puzzle.images.length);
 
-        $scope.move = function(index) {
+            $scope.shuffle = function() {
 
-            var ids;
-
-            if (position.canMove($scope.puzzle.currentPosition, index, $scope.puzzle.dimensionY)) {
-
-                arrayHelper.switchElements($scope.puzzle.images, $scope.puzzle.currentPosition, index);
-                $scope.puzzle.currentPosition = index;
-
-                ids = $scope.puzzle.images.map(function(image) {
-                    return image.id;
-                });
-
-                if (angular.equals(correct, ids)) {
-                    console.log('you won');
+                for (var i = 0; i < 50; i++) {
+                    $scope.puzzle.currentPosition = shuffle.move($scope.puzzle.images, $scope.puzzle.currentPosition, $scope.puzzle.dimensionX, $scope.puzzle.dimensionY);
                 }
             }
+
+            $scope.move = function(index) {
+
+                var ids;
+
+                if (position.canMove($scope.puzzle.currentPosition, index, $scope.puzzle.dimensionY)) {
+
+                    arrayHelper.switchElements($scope.puzzle.images, $scope.puzzle.currentPosition, index);
+                    $scope.puzzle.currentPosition = index;
+
+                    ids = $scope.puzzle.images.map(function(image) {
+                        return image.id;
+                    });
+
+                    if (angular.equals(correct, ids)) {
+                        console.log('you won');
+                    }
+                }
+            }
+
+
+            $scope.getWidth = function() {
+                return $scope.puzzle.dimensionX * $scope.puzzle.size + 'px';
+            }
+
+            $scope.getHeight = function() {
+                return $scope.puzzle.dimensionY * $scope.puzzle.size + 'px';
+            }
         }
-    }
-]);
+    ]);
+});

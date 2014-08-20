@@ -1,25 +1,29 @@
-'use strict';
+define(['angular', '../module'], function(angular, settingsModule) {
 
-angular.module('settingsModuleDirectives').directive('fileUploadWidget', ['$parse',
-    function ($parse) {
-        return {
-            restrict: 'E',
-            templateUrl: 'js/settings/views/directives/fileUploadWidget.html',
-            link: function(scope, element, attrs) {
+    'use strict';
 
-                var fileModel = $parse(attrs.fileModel),
-                    fileModelSetter = fileModel.assign;
+    settingsModule.directive('fileUploadWidget', ['$parse',
 
-                element.bind('change', function() {
+        function ($parse) {
+            return {
+                restrict: 'E',
+                templateUrl: 'js/settings/views/directives/fileUploadWidget.html',
+                link: function(scope, element, attrs) {
 
-                    scope.$apply(function() {
+                    var fileModel = $parse(attrs.fileModel),
+                        fileModelSetter = fileModel.assign;
 
-                        var file = angular.element(element[0]).find('[type=file]')[0].files[0];
+                    element.bind('change', function() {
 
-                        fileModelSetter(scope, file);
+                        scope.$apply(function() {
+
+                            var file = angular.element(element[0]).find('input')[0].files[0];
+
+                            fileModelSetter(scope, file);
+                        });
                     });
-                });
-            }
-        };
-    }
-]);
+                }
+            };
+        }
+    ]);
+});
